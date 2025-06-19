@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { useAuth } from "../context/AuthContext"
+import { API_URL } from "../utils/config"
+
 
 const FormUpdate = ({ product, handleCancelEditing, fetchingProducts }) => {
   const [name, setName] = useState(product.name)

@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Layout } from "../../components/Layout"
 import { useNavigate } from "react-router-dom"
+import { API_URL } from "../utils/config"
+
 
 const Register = () => {
   const [email, setEmail] = useState("")
