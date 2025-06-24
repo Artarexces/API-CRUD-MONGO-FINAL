@@ -43,6 +43,31 @@ const createProduct = async (req: Request, res: Response): Promise<any> => {
   }
 }
 
+// Busqueda de producto 
+
+const searchProduct = async (req: Request, res: Response): Promise<any>  => {
+  try {
+    const term = req.query.name as string;
+    if(!term){
+     return res.status(400).json({ error : 'Bad request, invalid data'})
+    }
+    
+    const regex = new RegExp(term, 'i')
+    const result = await Product.find({ name: regex })
+    
+    res.json({
+      success: true,
+      message: 'Producto obtenido',
+      data: result,
+    })
+  } catch (error) {
+    const err = error as Error
+    res.status(500).json({ success: false, message: err.message })
+  }
+}
+
+
+
 const deleteProduct = async (req: Request, res: Response): Promise<any> => {
   const id = req.params.id
   try {
@@ -89,4 +114,4 @@ const updateProduct = async (req: Request, res: Response): Promise<any> => {
   }
 }
 
-export { getAllProducts, createProduct, deleteProduct, updateProduct }
+export { getAllProducts, createProduct, searchProduct, deleteProduct, updateProduct }
