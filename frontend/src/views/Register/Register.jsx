@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Layout } from "../../components/Layout"
 import { useNavigate } from "react-router-dom"
-import { API_URL } from "../utils/config"
+import { API_URL } from "../../utils/config"
 
 
 const Register = () => {
@@ -57,7 +57,7 @@ const Register = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:1234/api/auth/register", {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         body: JSON.stringify(newDataUser),
         headers: { "Content-Type": "application/json" }

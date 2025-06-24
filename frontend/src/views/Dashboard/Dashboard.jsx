@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Layout } from "../../components/Layout"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
-import { API_URL } from "../utils/config"
+import { API_URL } from "../../utils/config"
 
 
 const Dashboard = () => {
@@ -48,7 +48,7 @@ const Dashboard = () => {
     const newDataProduct = { name, price, category }
 
     try {
-      const response = await fetch("http://localhost:1234/api/products", {
+      const response = await fetch(`${API_URL}/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
