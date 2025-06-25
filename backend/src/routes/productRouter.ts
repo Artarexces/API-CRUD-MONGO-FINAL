@@ -7,7 +7,7 @@ const productRouter = Router()
 productRouter.get("/", getAllProducts)
 productRouter.get("/search", searchProduct)
 productRouter.post("/", authMiddleware, createProduct)
-productRouter.delete("/:id", authMiddleware, deleteProduct)
 productRouter.patch("/:id", authMiddleware, updateProduct)
+productRouter.delete("/:id", authMiddleware, deleteProduct)
 
 export { productRouter }

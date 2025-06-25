@@ -55,6 +55,13 @@ const searchProduct = async (req: Request, res: Response): Promise<any>  => {
     const regex = new RegExp(term, 'i')
     const result = await Product.find({ name: regex })
     
+    if (result.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: `No se encontraron productos que contengan "${term}"`,
+      });
+    }
+
     res.json({
       success: true,
       message: 'Producto obtenido',
