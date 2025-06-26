@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
-import { Layout } from "../../components/Layout"
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+import { Layout } from "../../components/Layout"
 import { FormUpdate } from "../../components/FormUpdate"
+import { SearchBar } from "../../components/searchBar"  // Search bar
+import { useAuth } from "../../context/AuthContext"
 import { API_URL } from "../../utils/config"
 
 
@@ -77,6 +78,7 @@ const Home = () => {
       {
         isEditing && <FormUpdate product={productEditing} handleCancelEditing={handleCancelEditing} fetchingProducts={fetchingProducts} />
       }
+      <SearchBar setProducts={setProducts} fetchingProducts={fetchingProducts}/>
       <section className="grid-products">
         {
           products.map((product) => {
